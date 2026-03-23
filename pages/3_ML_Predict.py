@@ -8,15 +8,13 @@ from sklearn.svm import SVC
 
 st.title("🧪 ทดสอบโมเดล Machine Learning (Ensemble)")
 
-# ส่วนนี้จะเช็คว่าถ้าไม่มีโมเดล ให้สร้างใหม่จาก Dataset ที่คุณเพิ่งอัปโหลด
 if not os.path.exists('models/ensemble_model.pkl'):
     os.makedirs('models', exist_ok=True)
     df = pd.read_csv('datasets/heart_data.csv')
-    df = df.dropna().drop_duplicates() # ทำ Data Cleaning ตามเงื่อนไข
+    df = df.dropna().drop_duplicates()
     X = df[['Age', 'Cholesterol', 'Stress_Level']]
     y = df['Target']
-    
-    # สร้าง Ensemble จาก 3 ประเภท: Random Forest, Logistic, SVM
+
     m1 = VotingClassifier(estimators=[
         ('rf', RandomForestClassifier()), 
         ('lr', LogisticRegression()), 
@@ -25,10 +23,8 @@ if not os.path.exists('models/ensemble_model.pkl'):
     m1.fit(X, y)
     pickle.dump(m1, open('models/ensemble_model.pkl', 'wb'))
 
-# โหลดโมเดลมาใช้งาน
 model = pickle.load(open('models/ensemble_model.pkl', 'rb'))
 
-# สร้างช่องรับข้อมูล
 age = st.number_input("อายุ (Age)", value=30)
 chol = st.number_input("คอเลสเตอรอล (Cholesterol)", value=200)
 stress = st.slider("ระดับความเครียด (Stress Level)", 1, 10, 5)
