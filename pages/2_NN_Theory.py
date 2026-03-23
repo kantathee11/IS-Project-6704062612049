@@ -5,11 +5,9 @@ st.set_page_config(page_title="ทฤษฎี NN - 6704062612049", layout="wide
 st.title("🧠 รายละเอียดการพัฒนาโมเดล Neural Network")
 st.write("---")
 
-# a. ระบุที่มาของ Dataset
 st.header("A. ที่มาของข้อมูล (Dataset Source)")
 st.write("ข้อมูลชุดนี้เป็นข้อมูลจำลอง (Synthetic Data) ที่สร้างขึ้นโดย Generative AI เพื่อใช้ในการวิเคราะห์ความรู้สึก (Sentiment Analysis) จากข้อความรีวิว")
 
-# b. อธิบาย feature ของ Dataset
 st.header("B. คำอธิบายตัวแปร (Features)")
 st.markdown("""
 ข้อมูลชุด 'review_data.csv' ประกอบด้วยตัวแปรหลักดังนี้:
@@ -17,7 +15,6 @@ st.markdown("""
 * **Sentiment:** ความรู้สึกที่ได้จากรีวิว (0 = ลบ, 1 = บวก)
 """)
 
-# c. ความไม่สมบูรณ์และการเตรียมข้อมูล
 st.header("C. การจัดการข้อมูลที่ไม่สมบูรณ์ (Data Preparation)")
 st.warning("ข้อมูลรีวิวมีความสกปรกจากอักขระพิเศษ HTML Tags และเว้นวรรคส่วนเกิน")
 st.write("ขั้นตอนการเตรียมข้อมูล:")
