@@ -32,7 +32,7 @@ vectorizer, model = load_and_train()
 
 # ส่วนแสดงการใช้งาน
 with st.container(border=True):
-    st.subheader("📝 ทดสอบพิมพ์ข้อความรีวิว")
+    st.subheader("📝 พิมพ์ข้อความรีวิว")
     st.write("กรุณาป้อนข้อความภาษาอังกฤษเพื่อตรวจสอบความรู้สึกที่ซ่อนอยู่")
     
     # ช่องรับข้อมูลข้อความ
