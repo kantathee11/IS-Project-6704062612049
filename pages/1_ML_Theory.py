@@ -5,11 +5,9 @@ st.set_page_config(page_title="ทฤษฎี ML - 6704062612049", layout="wide
 st.title("📚 รายละเอียดการพัฒนาโมเดล Machine Learning")
 st.write("---")
 
-# a. ระบุที่มาของ Dataset
 st.header("A. ที่มาของข้อมูล (Dataset Source)")
 st.write("ข้อมูลชุดนี้เป็นข้อมูลจำลอง (Synthetic Data) ที่สร้างขึ้นโดย Generative AI เพื่อจำลองสถานการณ์การวิเคราะห์ความเสี่ยงด้านสุขภาพของพนักงานในองค์กร")
 
-# b. อธิบาย feature ของ Dataset
 st.header("B. คำอธิบายตัวแปร (Features)")
 st.markdown("""
 ข้อมูลชุด 'heart_data.csv' ประกอบด้วยตัวแปรหลักดังนี้:
@@ -19,7 +17,6 @@ st.markdown("""
 * **Target:** ผลลัพธ์การทำนาย (0 = ปกติ, 1 = เสี่ยงโรค)
 """)
 
-# c. ความไม่สมบูรณ์และการเตรียมข้อมูล
 st.header("C. การจัดการข้อมูลที่ไม่สมบูรณ์ (Data Preparation)")
 st.warning("Dataset นี้ถูกออกแบบให้มีค่าว่าง (Missing Values) และข้อมูลซ้ำ (Duplicates)")
 st.write("ขั้นตอนการเตรียมข้อมูล:")
