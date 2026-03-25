@@ -1,29 +1,29 @@
 import streamlit as st
 
-st.set_page_config(page_title="IS Project 6704062612049", layout="wide", page_icon="📊")
+st.set_page_config(page_title="IS Project - 6704062612049", layout="wide", page_icon="📊")
 
-# ส่วนหัวของหน้าเว็บ
-st.title("🌟 ระบบวิเคราะห์ข้อมูลด้วย AI และ Machine Learning")
-st.subheader("โปรเจครายวิชา IS | รหัสนักศึกษา: 6704062612049")
-st.write("---")
+# ส่วนหัว
+st.title("🌟 AI & Machine Learning Dashboard")
+st.subheader("การวิเคราะห์ข้อมูลด้วยโมเดลพยากรณ์ | รหัสนักศึกษา: 6704062612049")
+st.divider()
 
-# ใช้ Columns เพื่อจัดระเบียบหน้าแรก
-col1, col2 = st.columns([2, 1])
+# การจัดเลย์เอาต์หน้าแรก
+col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown("""
-    ### 👨‍💻 เกี่ยวกับโปรเจคนี้
-    โปรเจคนี้จัดทำขึ้นเพื่อสาธิตการนำข้อมูลที่มีความไม่สมบูรณ์ (Imperfect Data) มาผ่านกระบวนการเตรียมข้อมูล 
-    และนำไปพัฒนาต่อยอดเป็นโมเดลพยากรณ์ 2 รูปแบบ คือ:
-    1. **Machine Learning (Ensemble):** การรวมพลังของหลายอัลกอริทึม
-    2. **Neural Network:** โครงข่ายประสาทเทียมที่ออกแบบเอง
-    
-    👈 **กรุณาเลือกเมนูจากแถบด้านซ้ายเพื่อเริ่มต้นใช้งาน**
-    """)
+    with st.container(border=True):
+        st.markdown("### 🧪 ส่วนที่ 1: Machine Learning")
+        st.write("การพยากรณ์ความเสี่ยงด้านสุขภาพโดยใช้เทคนิค **Ensemble Learning (Voting)**")
+        st.info("หน้า 1: ทฤษฎี ML | หน้า 3: ทดสอบพยากรณ์")
 
 with col2:
-    st.info("📌 **สถานะระบบ:** ออนไลน์ (Online)")
-    st.success("✅ **Dataset:** พร้อมใช้งาน")
-    st.warning("⚠️ **Model:** โหลดสำเร็จ")
+    with st.container(border=True):
+        st.markdown("### 🧠 ส่วนที่ 2: Neural Network")
+        st.write("การวิเคราะห์ความรู้สึกจากข้อความ (Sentiment Analysis) โดยใช้ **MLP Classifier**")
+        st.info("หน้า 2: ทฤษฎี NN | หน้า 4: ทดสอบพยากรณ์")
 
-st.image("https://images.unsplash.com/photo-1551288049-bbbda536ad31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80", use_container_width=True)
+st.write("---")
+st.markdown("#### 🛠️ กระบวนการพัฒนา (Workflow)")
+st.image("https://miro.medium.com/v2/resize:fit:1400/1*Gu0pU0S55-m8v_H5m7qf7A.png", caption="Machine Learning Workflow", use_container_width=True)
+
+st.success("👈 กรุณาเลือกหัวข้อที่ต้องการตรวจสอบจาก Sidebar ด้านซ้าย")
