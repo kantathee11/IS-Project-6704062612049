@@ -1,48 +1,65 @@
 import streamlit as st
 
-st.set_page_config(page_title="IS Project - 6704062612049", layout="wide", page_icon="📊")
+# 1. การตั้งค่าหน้าเว็บ
+st.set_page_config(
+    page_title="AI Dashboard - 6704062612049", 
+    layout="wide", 
+    page_icon="📊"
+)
 
-# ส่วนหัว
+# 2. ส่วนหัวของเว็บไซต์
 st.title("🌟 AI & Machine Learning Dashboard")
-st.subheader("การวิเคราะห์ข้อมูลด้วยโมเดลพยากรณ์ | รหัสนักศึกษา: 6704062612049")
+st.subheader("ระบบวิเคราะห์และพยากรณ์ข้อมูล | รหัสนักศึกษา: 6704062612049")
+st.write("โครงการนี้พัฒนาขึ้นเพื่อนำเสนอการประยุกต์ใช้โมเดลการเรียนรู้ของเครื่องในด้านสุขภาพและการวิเคราะห์ข้อความ")
 st.divider()
 
-# การจัดเลย์เอาต์หน้าแรก
-col1, col2 = st.columns(2)
+# 3. เมนูทางลัด (Dashboard Cards)
+col_a, col_b = st.columns(2)
 
-with col1:
+with col_a:
     with st.container(border=True):
-        st.markdown("### 🧪 ส่วนที่ 1: Machine Learning")
-        st.write("การพยากรณ์ความเสี่ยงด้านสุขภาพโดยใช้เทคนิค **Ensemble Learning (Voting)**")
-        st.info("หน้า 1: ทฤษฎี ML | หน้า 3: ทดสอบพยากรณ์")
+        st.markdown("### 🧪 Machine Learning Section")
+        st.write("พยากรณ์ความเสี่ยงสุขภาพพนักงาน โดยใช้เทคนิค **Ensemble Learning (Voting)** ที่รวมจุดเด่นของ 3 โมเดลเข้าด้วยกัน")
+        st.info("📍 ดูทฤษฎีได้ที่หน้า 1 | ทดลองใช้ได้ที่หน้า 3")
 
-with col2:
+with col_b:
     with st.container(border=True):
-        st.markdown("### 🧠 ส่วนที่ 2: Neural Network")
-        st.write("การวิเคราะห์ความรู้สึกจากข้อความ (Sentiment Analysis) โดยใช้ **MLP Classifier**")
-        st.info("หน้า 2: ทฤษฎี NN | หน้า 4: ทดสอบพยากรณ์")
+        st.markdown("### 🧠 Neural Network Section")
+        st.write("วิเคราะห์ความรู้สึกจากรีวิว (Sentiment Analysis) โดยใช้ **Multi-layer Perceptron (MLP)** ซึ่งเป็นโครงข่ายประสาทเทียมระดับพื้นฐาน")
+        st.info("📍 ดูทฤษฎีได้ที่หน้า 2 | ทดลองใช้ได้ที่หน้า 4")
 
 st.write("---")
 
-# ส่วนแสดง Workflow (ใช้ภาพที่เสถียรกว่าจากวิกิพีเดีย หรือแหล่งที่อนุญาต)
-st.markdown("#### 🛠️ กระบวนการพัฒนา (Machine Learning Workflow)")
+# 4. ส่วน Workflow (สร้างด้วย Code เพื่อป้องกันภาพไม่โหลด)
+st.markdown("#### 🛠️ กระบวนการพัฒนาโมเดล (ML & NN Workflow)")
 
-# ใช้ภาพ Standard CRISP-DM หรือ ML Workflow ที่ลิงก์ไม่ตายง่ายๆ
-workflow_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Data_visualization_process_v1.png/800px-Data_visualization_process_v1.png"
+# สร้าง Step การทำงานแบบตารางเพื่อให้ดูเป็นลำดับขั้นตอน
+step1, step2, step3, step4 = st.columns(4)
 
-try:
-    st.image(workflow_url, caption="ขั้นตอนการทำงานของระบบ Machine Learning", use_container_width=True)
-except:
-    st.warning("⚠️ ไม่สามารถโหลดภาพ Workflow จากแหล่งภายนอกได้")
+with step1:
+    st.markdown("📂 **1. Data Collection**")
+    st.caption("จัดเตรียมชุดข้อมูล CSV จากการสำรวจและรวบรวมรีวิว")
 
-# เพิ่มคำอธิบายขั้นตอน (เพื่อให้คะแนนดีขึ้น)
-with st.expander("📝 อธิบายขั้นตอนการทำงาน (Workflow Step-by-Step)"):
+with step2:
+    st.markdown("🧹 **2. Preprocessing**")
+    st.caption("ทำความสะอาดข้อมูล, ลบค่าว่าง และแปลงข้อความเป็นตัวเลข (TF-IDF)")
+
+with step3:
+    st.markdown("⚙️ **3. Model Training**")
+    st.caption("ฝึกสอนโมเดลด้วย Voting Classifier และ Neural Network")
+
+with step4:
+    st.markdown("🚀 **4. Deployment**")
+    st.caption("นำเสนอผลลัพธ์ผ่าน Streamlit และประมวลผลแบบ Real-time")
+
+# 5. ส่วนทฤษฎีเพิ่มเติม (Expander)
+st.write("")
+with st.expander("📝 ข้อมูลเกี่ยวกับเทคนิคที่ใช้ในโปรเจคนี้"):
     st.markdown("""
-    1. **Data Collection:** รวบรวมข้อมูลจาก `heart_data.csv` และ `review_data.csv`
-    2. **Data Cleaning:** จัดการ Missing Values และลบข้อมูลซ้ำ (Preprocessing)
-    3. **Model Training:** ฝึกสอนโมเดล Ensemble และ Neural Network
-    4. **Evaluation:** ทดสอบความแม่นยำของโมเดล
-    5. **Deployment:** นำเสนอผลลัพธ์ผ่านเว็บแอปพลิเคชัน Streamlit
+    - **Ensemble (Voting):** ใช้การรวมผลจาก Random Forest, Logistic Regression และ SVC เพื่อลด Error
+    - **Neural Network (MLP):** ใช้ Hidden Layers 2 ชั้น (16, 8) เพื่อเรียนรู้ความสัมพันธ์ที่ซับซ้อนของคำศัพท์
+    - **TF-IDF Vectorizer:** ใช้แปลงข้อความภาษาอังกฤษให้เป็นค่าน้ำหนักเชิงสถิติเพื่อให้ AI เข้าใจความหมาย
     """)
 
-st.success("👈 กรุณาเลือกหัวข้อที่ต้องการตรวจสอบจาก Sidebar ด้านซ้าย")
+st.write("---")
+st.success("👈 กรุณาเลือกหัวข้อที่ต้องการตรวจสอบจาก Sidebar (เมนูด้านซ้าย)")
