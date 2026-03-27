@@ -63,3 +63,13 @@ with st.expander("📝 ข้อมูลเกี่ยวกับเทคน
 
 st.write("---")
 st.success("👈 กรุณาเลือกหัวข้อที่ต้องการตรวจสอบจาก Sidebar (เมนูด้านซ้าย)")
+
+import streamlit as st
+
+def show_documentation():
+    with open("DOCUMENTATION.md", "r", encoding="utf-8") as f:
+        doc_content = f.read()
+    st.markdown(doc_content)
+
+# เรียกใช้ฟังก์ชันในหน้าเว็บที่คุณต้องการ
+show_documentation()
