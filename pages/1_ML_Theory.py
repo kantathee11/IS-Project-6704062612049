@@ -1,45 +1,49 @@
 import streamlit as st
-import pandas as pd
 
-# 1. ตั้งค่าหน้าเว็บให้ดูเป็นมืออาชีพ
-st.set_page_config(page_title="ML Theory - 6704062612049", layout="wide", page_icon="📚")
+st.set_page_config(page_title="ML Theory - 6704062612049", layout="wide", page_icon="🧪")
 
-st.title("📚 รายละเอียดการพัฒนาโมเดล Machine Learning")
-st.write("---")
+st.title("🧪 ทฤษฎี Machine Learning แบบ Ensemble Learning")
+st.write("ในโปรเจคนี้เราใช้เทคนิค **Voting Classifier** ซึ่งเป็นการรวมพลังของโมเดล 3 ประเภท เพื่อพยากรณ์ความเสี่ยงด้านสุขภาพ")
+st.divider()
 
-# ส่วนแสดงสถิติแบบ Metric ให้ดูน่าสนใจ
-m1, m2, m3 = st.columns(3)
-m1.metric("Dataset Name", "heart_data.csv")
-m2.metric("Model Type", "Ensemble (Voting)")
-m3.metric("Status", "Data Cleaned")
+# อธิบายโมเดลทั้ง 3 ประเภท
+col1, col2, col3 = st.columns(3)
 
-# a. ระบุที่มาของ Dataset
-with st.expander("📌 A. ที่มาของข้อมูล (Dataset Source)", expanded=True):
-    st.write("ข้อมูลชุดนี้เป็น **ข้อมูลจำลอง (Synthetic Data)** ที่สร้างขึ้นโดย Generative AI เพื่อจำลองสถานการณ์การวิเคราะห์ความเสี่ยงด้านสุขภาพของพนักงานในองค์กร สำหรับใช้ในโปรเจควิชา IS 2568")
-
-# b. อธิบาย feature ของ Dataset
-with st.expander("📊 B. คำอธิบายตัวแปร (Features)", expanded=True):
-    st.write("ข้อมูลชุด 'heart_data.csv' ประกอบด้วยตัวแปรหลักที่ใช้ในการพยากรณ์ ดังนี้:")
+with col1:
+    st.header("1. Random Forest")
     st.markdown("""
-    * **Age:** อายุของพนักงาน (ตัวเลข)
-    * **Cholesterol:** ระดับไขมันในเลือด
-    * **Stress_Level:** ระดับความเครียดประเมินจากแบบสอบถาม (คะแนน 1-10)
-    * **Target:** ผลลัพธ์การทำนาย (0 = ปกติ, 1 = เสี่ยงโรค)
+    **ประเภท:** Bagging Ensemble
+    - สร้าง 'ต้นไม้ตัดสินใจ' (Decision Trees) จำนวนมากมาทำงานขนานกัน
+    - **จุดเด่น:** ช่วยลดความแปรปรวน (Variance) ของข้อมูล และป้องกันการจำข้อมูลแม่นเกินไป (Overfitting)
+    - เหมาะสำหรับข้อมูลที่มีความสัมพันธ์ซับซ้อนและไม่ใช่เส้นตรง
     """)
 
-# c. ความไม่สมบูรณ์และการเตรียมข้อมูล
-with st.expander("🛠️ C. การจัดการข้อมูลที่ไม่สมบูรณ์ (Data Preparation)", expanded=True):
-    st.warning("⚠️ ตรวจพบความไม่สมบูรณ์: มีค่าว่าง (Missing Values) และข้อมูลซ้ำ (Duplicates)")
-    st.write("**ขั้นตอนการเตรียมข้อมูล:**")
+with col2:
+    st.header("2. Logistic Regression")
     st.markdown("""
-    1. **การลบค่าว่าง:** ใช้คำสั่ง `dropna()` เพื่อตัดแถวที่ข้อมูลไม่ครบถ้วนออก เพื่อความแม่นยำของโมเดล
-    2. **การลบข้อมูลซ้ำ:** ใช้คำสั่ง `drop_duplicates()` เพื่อป้องกันไม่ให้โมเดลจดจำข้อมูลเดิมซ้ำซ้อน
+    **ประเภท:** Linear Model
+    - คำนวณความน่าจะเป็นโดยใช้ฟังก์ชันทางคณิตศาสตร์ (Sigmoid)
+    - **จุดเด่น:** ให้ผลลัพธ์ที่เสถียรและตีความหมายได้ง่าย เป็นฐานการพยากรณ์ที่ดีหากข้อมูลมีแนวโน้มเป็นเหตุเป็นผลชัดเจน
+    - ช่วยให้โมเดลโดยรวมมีความสมดุล (Bias-Variance Tradeoff)
     """)
-    st.code("""
-# ตัวอย่างโค้ดที่ใช้เตรียมข้อมูล
-df = pd.read_csv('datasets/heart_data.csv')
-df = df.dropna().drop_duplicates()
-    """, language='python')
+
+with col3:
+    st.header("3. Support Vector Machine (SVC)")
+    st.markdown("""
+    **ประเภท:** Kernel-based Model
+    - พยายามหา 'เส้นแบ่ง' หรือ 'Hyperplane' ที่กว้างที่สุดเพื่อแยกกลุ่มข้อมูล
+    - **จุดเด่น:** แม่นยำสูงในการแยกแยะข้อมูลที่มีขอบเขตคาบเกี่ยวกัน (Decision Boundary)
+    - ช่วยเพิ่มประสิทธิภาพในการจำแนกกลุ่มเสี่ยงและกลุ่มปกติให้ชัดเจนขึ้น
+    """)
 
 st.write("---")
-st.write("**แหล่งอ้างอิง:** กระบวนการพัฒนาอ้างอิงมาตรฐานจาก Scikit-learn Library")
+
+# อธิบายหลักการ Voting
+st.subheader("🤝 ทำไมต้องใช้ Ensemble (Voting)?")
+st.info("""
+การทำ **Ensemble** แบบ Voting เปรียบเสมือนการปรึกษา 'คณะกรรมการ' โดยให้นำคำทำนายจากทั้ง 3 โมเดลข้างต้นมา 'โหวต' กัน (ในโปรเจคนี้ใช้ Soft Voting คือการเฉลี่ยความน่าเชื่อถือ) 
+วิธีนี้จะช่วยแก้จุดอ่อนของโมเดลเดี่ยวๆ ทำให้ระบบพยากรณ์มีความแม่นยำและน่าเชื่อถือมากขึ้นครับ
+""")
+
+st.write("---")
+st.caption("จัดทำโดย: รหัสนักศึกษา 6704062612049")
